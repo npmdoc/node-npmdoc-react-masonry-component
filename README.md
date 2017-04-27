@@ -1,6 +1,6 @@
 # npmdoc-react-masonry-component
 
-#### api documentation for  [react-masonry-component (v5.0.5)](https://github.com/eiriklv/react-masonry-component)  [![npm package](https://img.shields.io/npm/v/npmdoc-react-masonry-component.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-react-masonry-component) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-react-masonry-component.svg)](https://travis-ci.org/npmdoc/node-npmdoc-react-masonry-component)
+#### basic api documentation for  [react-masonry-component (v5.0.5)](https://github.com/eiriklv/react-masonry-component)  [![npm package](https://img.shields.io/npm/v/npmdoc-react-masonry-component.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-react-masonry-component) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-react-masonry-component.svg)](https://travis-ci.org/npmdoc/node-npmdoc-react-masonry-component)
 
 #### A masonry component for React.js
 
@@ -21,11 +21,18 @@
 ```json
 
 {
-    "name": "react-masonry-component",
-    "version": "5.0.5",
-    "main": "./lib/index",
-    "description": "A masonry component for React.js",
-    "typings": "typings.d.ts",
+    "author": {
+        "name": "Eirik Vullum",
+        "url": "http://www.evconsult.no/"
+    },
+    "bugs": {
+        "url": "https://github.com/eiriklv/react-masonry-component/issues"
+    },
+    "contributors": [
+        {
+            "name": "Marwan Butrous"
+        }
+    ],
     "dependencies": {
         "create-react-class": "^15.5.2",
         "element-resize-detector": "^1.1.9",
@@ -36,6 +43,7 @@
         "masonry-layout": "^4.0.0",
         "prop-types": "^15.5.8"
     },
+    "description": "A masonry component for React.js",
     "devDependencies": {
         "babel-core": "^6.3.26",
         "babel-loader": "^6.2.0",
@@ -58,18 +66,13 @@
         "react-dom": "^15.4.1",
         "webpack": "^1.12.9"
     },
-    "peerDependencies": {
-        "react": "^0.14.0 || ^15.0.0-0"
+    "directories": {},
+    "dist": {
+        "shasum": "7a6e92fc4f67f6e7c1710b4fb90b4d7e81c0719f",
+        "tarball": "https://registry.npmjs.org/react-masonry-component/-/react-masonry-component-5.0.5.tgz"
     },
-    "scripts": {
-        "test": "npm run lint && karma start spec/setup/karma.conf.js",
-        "dev": "karma start spec/setup/karma.conf.js --no-single-run",
-        "lint": "eslint lib/index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/eiriklv/react-masonry-component.git"
-    },
+    "gitHead": "0f98b53c2681f11756f77ed32f61342929980b1b",
+    "homepage": "https://github.com/eiriklv/react-masonry-component",
     "keywords": [
         "react",
         "mixin",
@@ -78,17 +81,33 @@
         "isotope",
         "react-component"
     ],
-    "author": "Eirik Vullum <evullum@gmail.com> (http://www.evconsult.no/)",
-    "contributors": [
+    "license": "MIT",
+    "main": "./lib/index",
+    "maintainers": [
         {
-            "name": "Marwan Butrous"
+            "name": "afram"
+        },
+        {
+            "name": "eiriklv"
         }
     ],
-    "bugs": {
-        "url": "https://github.com/eiriklv/react-masonry-component/issues"
+    "name": "react-masonry-component",
+    "optionalDependencies": {},
+    "peerDependencies": {
+        "react": "^0.14.0 || ^15.0.0-0"
     },
-    "homepage": "https://github.com/eiriklv/react-masonry-component",
-    "license": "MIT"
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/eiriklv/react-masonry-component.git"
+    },
+    "scripts": {
+        "dev": "karma start spec/setup/karma.conf.js --no-single-run",
+        "lint": "eslint lib/index.js",
+        "test": "npm run lint && karma start spec/setup/karma.conf.js"
+    },
+    "typings": "typings.d.ts",
+    "version": "5.0.5",
+    "bin": {}
 }
 ```
 
