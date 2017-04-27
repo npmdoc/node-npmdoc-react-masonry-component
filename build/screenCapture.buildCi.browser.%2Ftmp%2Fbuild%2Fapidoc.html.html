@@ -1150,7 +1150,23 @@
     this.latestKnownDomChildren.forEach(this.erd.uninstall, this.erd);
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  componentDidUpdate: function() {
+this.performLayout();
+this.imagesLoaded();
+  },
+
+  componentWillUnmount: function() {
+this.<span class="apidocCodeKeywordSpan">destroyErd</span>();
+
+// unregister events
+if (this.props.onLayoutComplete) {
+  this.masonry.off('layoutComplete', this.props.onLayoutComplete);
+}
+
+if (this.props.onRemoveComplete) {
+...</pre></li>
     </ul>
 
 
@@ -1268,7 +1284,23 @@
     forceItemReload: forceItemReload
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  prepended: prepended,
+  moved: moved,
+  forceItemReload: forceItemReload
+};
+  },
+
+  performLayout: function() {
+var diff = this.<span class="apidocCodeKeywordSpan">diffDomChildren</span>();
+
+// Would never be true. (see comments of 'diffDomChildren' about 'removed')
+if (diff.removed.length &gt; 0) {
+  if (this.props.enableResizableChildren) {
+    diff.removed.forEach(this.erd.removeAllListeners, this.erd);
+  }
+  this.masonry.remove(diff.removed);
+...</pre></li>
     </ul>
 
 
@@ -1285,7 +1317,23 @@
   var children = this.props.options.itemSelector ? node.querySelectorAll(this.props.options.itemSelector) : node.children;
   return Array.prototype.slice.call(children);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      this.masonry.on('layoutComplete', this.props.onLayoutComplete);
+    }
+
+    if (this.props.onRemoveComplete) {
+      this.masonry.on('removeComplete', this.props.onRemoveComplete);
+    }
+
+    this.latestKnownDomChildren = this.<span class="apidocCodeKeywordSpan">getCurrentDomChildren</span>();
+  }
+},
+
+getCurrentDomChildren: function() {
+  var node = this.refs[refName];
+  var children = this.props.options.itemSelector ? node.querySelectorAll(this.props.options.itemSelector) : node.children;
+  return Array.prototype.slice.call(children);
+...</pre></li>
     </ul>
 
 
@@ -1314,7 +1362,22 @@
         }.bind(this), 100)
     );
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    this.latestKnownDomChildren.forEach(this.erd.uninstall, this.erd);
+  }
+},
+
+componentDidMount: function() {
+  this.initializeMasonry();
+  this.initializeResizableChildren();
+  this.<span class="apidocCodeKeywordSpan">imagesLoaded</span>();
+},
+
+componentDidUpdate: function() {
+  this.performLayout();
+  this.imagesLoaded();
+},
+...</pre></li>
     </ul>
 
 
@@ -1344,7 +1407,23 @@
     this.latestKnownDomChildren = this.getCurrentDomChildren();
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+destroyErd: function() {
+  if (this.erd) {
+    this.latestKnownDomChildren.forEach(this.erd.uninstall, this.erd);
+  }
+},
+
+componentDidMount: function() {
+  this.<span class="apidocCodeKeywordSpan">initializeMasonry</span>();
+  this.initializeResizableChildren();
+  this.imagesLoaded();
+},
+
+componentDidUpdate: function() {
+  this.performLayout();
+  this.imagesLoaded();
+...</pre></li>
     </ul>
 
 
@@ -1367,7 +1446,23 @@
 
   this.latestKnownDomChildren.forEach(this.listenToElementResize, this);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (this.erd) {
+    this.latestKnownDomChildren.forEach(this.erd.uninstall, this.erd);
+  }
+},
+
+componentDidMount: function() {
+  this.initializeMasonry();
+  this.<span class="apidocCodeKeywordSpan">initializeResizableChildren</span>();
+  this.imagesLoaded();
+},
+
+componentDidUpdate: function() {
+  this.performLayout();
+  this.imagesLoaded();
+},
+...</pre></li>
     </ul>
 
 
@@ -1434,7 +1529,23 @@
 
   this.masonry.layout();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  componentDidMount: function() {
+this.initializeMasonry();
+this.initializeResizableChildren();
+this.imagesLoaded();
+  },
+
+  componentDidUpdate: function() {
+this.<span class="apidocCodeKeywordSpan">performLayout</span>();
+this.imagesLoaded();
+  },
+
+  componentWillUnmount: function() {
+this.destroyErd();
+
+// unregister events
+...</pre></li>
     </ul>
 
 
@@ -1904,7 +2015,23 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onImagesLoaded = function () { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  imagesloaded(this.refs[refName])
+    .on(
+      this.props.updateOnEachImageLoad ? 'progress' : 'always',
+      debounce(
+        function(instance) {
+          if (this.props.onImagesLoaded) {
+            this.props.<span class="apidocCodeKeywordSpan">onImagesLoaded</span>(instance);
+          }
+          this.masonry.layout();
+        }.bind(this), 100)
+    );
+},
+
+initializeResizableChildren: function() {
+...</pre></li>
     </ul>
 
 
@@ -2036,7 +2163,23 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">onImagesLoaded = function () { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  imagesloaded(this.refs[refName])
+    .on(
+      this.props.updateOnEachImageLoad ? 'progress' : 'always',
+      debounce(
+        function(instance) {
+          if (this.props.onImagesLoaded) {
+            this.props.<span class="apidocCodeKeywordSpan">onImagesLoaded</span>(instance);
+          }
+          this.masonry.layout();
+        }.bind(this), 100)
+    );
+},
+
+initializeResizableChildren: function() {
+...</pre></li>
     </ul>
 
 
